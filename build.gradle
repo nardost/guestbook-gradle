@@ -1,0 +1,36 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+group = 'com.objectdb.tutorial.spring'
+version = '1.0'
+
+description = """guestbook-gradle"""
+
+sourceCompatibility = 1.5
+targetCompatibility = 1.5
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+
+
+repositories {
+        
+     maven { url "http://m2.objectdb.com" }
+     maven { url "http://repository.springsource.com/maven/bundles/release" }
+     maven { url "http://repository.springsource.com/maven/bundles/external" }
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'com.objectdb', name: 'objectdb', version:'2.0.4'
+    compile group: 'org.springframework', name: 'spring-webmvc', version:'3.0.5.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.0.5.RELEASE'
+    compile group: 'org.springframework', name: 'spring-orm', version:'3.0.5.RELEASE'
+    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'
+    compile group: 'cglib', name: 'cglib', version:'2.2'
+    compile group: 'org.aspectj', name: 'aspectjweaver', version:'1.6.10'
+    providedCompile group: 'javax.servlet', name: 'servlet-api', version:'2.5'
+    providedCompile group: 'javax.servlet.jsp', name: 'jsp-api', version:'2.1'
+}
